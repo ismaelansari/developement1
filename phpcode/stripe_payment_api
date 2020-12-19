@@ -1,0 +1,28 @@
+<?php
+   try{
+
+         $stripe = new StripeClient('sk_test_51HHNUvKgSxBKk9IIxIobqet7J1nDdHdqor0WrKRE8IeoX04gW6XUS6YOO65thgWiiEuCHemyENJDfs9EsJiocP7500yBTTMMqS');
+                     
+	     $createTokenForAdmin =  $stripe->tokens->create([
+            'card' => [
+                'number'    => $paymentData['number'],
+                'exp_month' => $paymentData['exp_month'],
+                'exp_year'  => $paymentData['exp_year'],
+                'cvc'       => $paymentData['cvc'],
+            ],
+         ]);
+                     
+		 $adminChargeStatus = $stripe->charges->create([
+		      'amount' => $paymentData['amount']*100,
+		      'currency' => 'sar',
+		      'source' => $createTokenForAdmin['id'],
+		      'description' => 'Payment for Jamali',
+           ]);
+
+           return ['status'=>true,'message'=>'Success','data'=>$adminChargeStatus];
+                     
+	     } catch (\Exception $e) {
+       	 	return ['status'=>false,'message'=>$e->getMessage()];
+	     }
+
+?>

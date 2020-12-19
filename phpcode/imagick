@@ -1,0 +1,42 @@
+<?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$pic = new Imagick($_FILES['image']['tmp_name']);
+$exif = exif_read_data($_FILES['image']['tmp_name']); //parameter should be image path
+
+if (isset($exif['Orientation'])) {
+
+                        switch ($exif['Orientation']) {
+
+                            case 3:
+
+                                $pic->rotateImage("#cccccc", 180);
+
+                                break;
+
+                            case 6:
+
+                                $pic->rotateImage("#cccccc", -90);
+
+                                break;
+
+                            case 8:
+
+                                $pic->rotateImage("#cccccc", 90);
+
+                                break;
+
+                        }
+
+ }
+
+ $pic->setCompressionQuality(2);
+ $pic->setImageFormat('png');
+ $rand = rand(0, 100000) . $this->str_random('10') . 'png';
+ $pic->writeImage('uploads/image_'.$rand.'.jpeg');                             
+ $pic->destroy();
+
+?>

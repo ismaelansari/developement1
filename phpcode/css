@@ -1,0 +1,10 @@
+       1.display : flex
+          2.flex-direction : row(default) / row-reverse / column / column-reverse;
+          3.flex-wrap : wrap(default)/wrap-reverse/nowrap; / working with width percentage
+          4.justify-contain : center / space-between / space-around;
+          5. align-item : flex-start(default) / flex-end / center / baseline / stretch;
+          6. align-content : flex-start(default) / flex-end / center / baseline / stretch;
+          7. flex-grow : 1 /2 (Working on child like .item:nth-child(4){flex-grow:1;});
+          8. flex-shrink : it's also work on child;
+          9. flex-basis  : work on child;
+          10. align-self : working on child;

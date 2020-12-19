@@ -1,0 +1,10 @@
+
+export const GET_CONTACTS   = 'GET_CONTACTS';
+
+export const SHOW_CONTACT   = 'SHOW_CONTACT';
+
+export const CREATE_CONTACT = 'CREATE_CONTACT';
+
+export const UPDATE_CONTACT = 'UPDATE_CONTACT';
+
+export const DELETE_CONTACT = 'DELETE_CONTACT';

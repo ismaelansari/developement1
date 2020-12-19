@@ -1,0 +1,6 @@
+$("button").click(function() {
+  var x = $("#file1"),
+      y = x.clone();
+  x.attr("id", "fileOld");
+  y.insertAfter("button");
+});
